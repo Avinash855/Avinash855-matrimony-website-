@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verified Profiles with Chat and Favorite Icon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      padding: 15px;
+      background-color: #fdfdfd;
+      position: relative;
+    }
+
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-right: 15px;
+      object-fit: cover;
+      border: 2px solid #007BFF;
+    }
+
+    .profile-details {
+      flex: 1;
+    }
+
+    .profile-details h2 {
+      font-size: 18px;
+      color: #444;
+      margin: 0;
+    }
+
+    .profile-details p {
+      font-size: 14px;
+      margin: 5px 0;
+      color: #666;
+    }
+
+    .view-profile {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .view-profile:hover {
+      background-color: #0056b3;
+    }
+
+    /* Chat Icon */
+    .chat-icon {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 24px;
+      color: #007BFF;
+      cursor: pointer;
+    }
+
+    /* Favorite Icon (❤️) and (💓) */
+    .fav-icon {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #ff5733;
+    }
+
+    .fav-icon.favourited {
+      color: gold;
+    }
+
+    .more-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .more-button, .buy-membership {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .more-button:hover {
+      background-color: #218838;
+    }
+
+    .buy-membership {
+      display: none; /* Hidden initially */
+      background-color: #ff5733;
+    }
+
+    .buy-membership:hover {
+      background-color: #c44127;
+    }
+
+    .more-message {
+      display: none; /* Hidden initially */
+      margin-top: 10px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .get-chat {
+      display: none; /* Hidden initially */
+      margin-top: 10px;
+      font-size: 16px;
+      background-color: #ffc107;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .get-chat:hover {
+      background-color: #e0a800;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Verified Member Profiles</h1>
+
+    <!-- Verified Profile 1 -->
+    <div class="profile">
+      <img src="https://imgur.com/BcGP1Kj.jpg" alt="Amit Tiwari">
+      <div class="profile-details">
+        <h2>Amit Tiwari (FRE-UP002)</h2>
+        <p><strong>Category:</strong> Freelancer</p>
+        <p><strong>City:</strong> Kanpur, Uttar Pradesh</p>
+        <p><strong>Profession:</strong> Graphic Designer</p>
+        <p><strong>Skills:</strong> Adobe Photoshop, Illustrator, Canva</p>
+        <a href="#" class="view-profile" onclick="openModal('Amit Tiwari', 'Freelancer', 'Kanpur', 'Graphic Designer', 'Photoshop, Illustrator, Canva', 'Father: Manish Tiwari, Mother: Pooja Tiwari, Siblings: None')">View Full Profile</a>
+      </div>
+    </div>
+    <!-- Chat Icon for Profile 1 -->
+    <span class="chat-icon" onclick="showChatModal('Amit Tiwari')">💌</span>
+    <!-- Favorite Icon for Profile 1 -->
+    <span class="fav-icon" onclick="toggleFavourite(this)">❤️</span>
+
+    <!-- Verified Profile 2 -->
+    <div class="profile">
+      <img src="https://imgur.com/UMGVvOi.jpg" alt="Sonal Verma">
+      <div class="profile-details">
+        <h2>Sonal Verma (TEA-UP003)</h2>
+        <p><strong>Category:</strong> Teacher</p>
+        <p><strong>City:</strong> Agra, Uttar Pradesh</p>
+        <p><strong>Subject Expertise:</strong> Mathematics</p>
+        <p><strong>Experience:</strong> 10 Years</p>
+        <a href="#" class="view-profile" onclick="openModal('Sonal Verma', 'Teacher', 'Agra', 'Mathematics', 'Teaching Math for 10 Years', 'Father: Prakash Verma, Mother: Suman Verma, Siblings: None')">View Full Profile</a>
+      </div>
+    </div>
+    <!-- Chat Icon for Profile 2 -->
+    <span class="chat-icon" onclick="showChatModal('Sonal Verma')">💌</span>
+    <!-- Favorite Icon for Profile 2 -->
+    <span class="fav-icon" onclick="toggleFavourite(this)">❤️</span>
+
+    <!-- Verified Profile 3 -->
+    <div class="profile">
+      <img src="https://imgur.com/LGi3Who.jpg" alt="Sushma Patel">
+      <div class="profile-details">
+        <h2>Sushma Patel (STU-UP004)</h2>
+        <p><strong>Category:</strong> Student</p>
+        <p><strong>City:</strong> Lucknow, Uttar Pradesh</p>
+        <p><strong>Course:</strong> M.Sc. in Physics</p>
+        <p><strong>Hobbies:</strong> Reading, Astronomy</p>
+        <a href="#" class="view-profile" onclick="openModal('Sushma Patel', 'Student', 'Lucknow', 'M.Sc. in Physics', 'Reading, Astronomy', 'Father: Rajeev Patel, Mother: Seema Patel, Siblings: Anjali Patel (Sister)')">View Full Profile</a>
+      </div>
+    </div>
+    <!-- Chat Icon for Profile 3 -->
+    <span class="chat-icon" onclick="showChatModal('Sushma Patel')">💌</span>
+    <!-- Favorite Icon for Profile 3 -->
+    <span class="fav-icon" onclick="toggleFavourite(this)">❤️</span>
+
+    <!-- Verified Profile 4 -->
+    <div class="profile">
+      <img src="https://imgur.com/WfK2sH0.jpg" alt="Rajesh Kumar">
+      <div class="profile-details">
+        <h2>Rajesh Kumar (ENG-UP005)</h2>
+        <p><strong>Category:</strong> Engineer</p>
+        <p><strong>City:</strong> Varanasi, Uttar Pradesh</p>
+        <p><strong>Profession:</strong> Mechanical Engineer</p>
+        <p><strong>Experience:</strong> 5 Years</p>
+        <a href="#" class="view-profile" onclick="openModal('Rajesh Kumar', 'Engineer', 'Varanasi', 'Mechanical Engineer', 'CAD, SolidWorks', 'Father: Shiv Kumar, Mother: Radha Kumar, Siblings: None')">View Full Profile</a>
+      </div>
+    </div>
+    <!-- Chat Icon for Profile 4 -->
+    <span class="chat-icon" onclick="showChatModal('Rajesh Kumar')">💌</span>
+    <!-- Favorite Icon for Profile 4 -->
+    <span class="fav-icon" onclick="toggleFavourite(this)">❤️</span>
+
+    <!-- Verified Profile 5 -->
+    <div class="profile">
+      <img src="https://imgur.com/WwFsdGH.jpg" alt="Anita Sharma">
+      <div class="profile-details">
+        <h2>Anita Sharma (MED-UP006)</h2>
+        <p><strong>Category:</strong> Doctor</p>
+        <p><strong>City:</strong> Allahabad, Uttar Pradesh</p>
+        <p><strong>Specialization:</strong> Pediatrician</p>
+        <p><strong>Experience:</strong> 8 Years</p>
+        <a href="#" class="view-profile" onclick="openModal('Anita Sharma', 'Doctor', 'Allahabad', 'Pediatrician', 'Working at Apollo Hospitals', 'Father: Vijay Sharma, Mother: Neelam Sharma, Siblings: None')">View Full Profile</a>
+      </div>
+    </div>
+    <!-- Chat Icon for Profile 5 -->
+    <span class="chat-icon" onclick="showChatModal('Anita Sharma')">💌</span>
+    <!-- Favorite Icon for Profile 5 -->
+    <span class="fav-icon" onclick="toggleFavourite(this)">❤️</span>
+
+    <!-- More Button and Membership Section -->
+    <div class="more-container">
+      <button class="more-button" onclick="showMembership()">More</button>
+      <p class="more-message">Get more views by purchasing a membership.</p>
+      <a href="#" class="buy-membership">Buy Membership</a>
+    </div>
+  </div>
+
+  <script>
+    function showMembership() {
+      // Show the membership message and button
+      document.querySelector('.more-message').style.display = 'block';
+      document.querySelector('.buy-membership').style.display = 'inline-block';
+      document.querySelector('.more-button').style.display = 'none'; // Hide More button
+    }
+
+    // Favorite icon toggle functionality
+    function toggleFavourite(icon) {
+      icon.classList.toggle('favourited');
+      if (icon.classList.contains('favourited')) {
+        icon.innerHTML = '💓'; // Change to heart
+      } else {
+        icon.innerHTML = '❤️'; // Change to heart outline
+      }
+    }
+
+    // Show Chat Modal functionality
+    function showChatModal(profileName) {
+      alert('Chat with ' + profileName + ' - Please buy the membership to get full access.');
+      // You can add a modal or other features to start chat here
+    }
+  </script>
+</body>
+</html>
